@@ -1,8 +1,8 @@
 export class CreateUserDTO {
-    username: string;
+    name: string;
     email: string;
     password: string;
-    isAdmin: string;
+    isAdmin: boolean;
     type: string;
     // roles: string[];
   }

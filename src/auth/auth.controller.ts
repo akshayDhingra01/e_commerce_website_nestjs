@@ -3,7 +3,7 @@ import { UserService } from 'src/user/user.service';
 import { AuthService } from './auth.service';
 import { Roles } from './decorators/roles.decorator';
 import { Role } from './enums/role.enum';
-import { CreateUserDTO } from 'src/user/dtos/create-user-dto';
+import { CreateUserDTO } from 'src/user/dtos/create-user.dto';
 import { LocalAuthGuard } from './guards/local.guard';
 import { JwtAuthGuard } from './guards/jwt.guard';
 import { RolesGuard } from './guards/roles.guard';
@@ -14,7 +14,11 @@ export class AuthController {
 
   @Post('/register')
   async register(@Body() createUserDTO: CreateUserDTO) {
+    // console.log("hash");
+    
     const user = await this.userService.addUser(createUserDTO);
+    console.log(user);
+    
     return user;
   }
 
@@ -38,6 +42,3 @@ export class AuthController {
     return req.user;
   }
 }
-
-
-// Creating the schemas and DTOs
